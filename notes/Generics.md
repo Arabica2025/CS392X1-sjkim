@@ -67,3 +67,8 @@ if (n>0):
     return (loop(n-1), n*r)
 ```
 This is called **tail-recursive** call.
+
+Parametric Polymorphism (Generics)
+
+
+
