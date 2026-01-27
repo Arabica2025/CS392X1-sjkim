@@ -76,21 +76,81 @@ public class Payroll {
         if (i < 0 || i >= this.current_size){
             throw new EmployeeIndexException("Invalid employee index");
         }
-        this.people[i] = this.people[this.maximum_size - 1];
-        this.people[this.maximum_size - 1] = null;
+        this.people[i] = this.people[this.current_size - 1];
+        this.people[this.current_size - 1] = null;
         this.current_size--;
     }
     
-    public int find_employee(String name) throws EmployeeNotFoundException {
-	/* your code */
+    public int find_employee(String target_name) throws EmployeeNotFoundException {
+	/* public int find_employee(String name) throws EmployeeNotFoundException
+    
+    return the first i such that people[i].name == target_name
+    throw exception if no such i found
+    */
+        for (int i =0; i < this.current_size; i++){
+            if (this.people[i].name.equals(target_name)){
+                return i;
+            }
+        }
+        throw new EmployeeNotFoundException("Employee not found in the database: " + target_name);
     }
 
+
+    /*helper method to find the longer array between two payrolls
+    private int find_maximum_iter(int i_current, int j_current){
+        if (i_current < j_current){
+            return j_current;
+        } else {
+            return i_current;
+        }
+    }
+        */
+
     public void add_payroll(Payroll source) {
-	/* your code */
+	/* combine two Payrolls into one */
+    
+        Payroll combined = new Payroll();
+        combined.maximum_size = this.maximum_size + source.maximum_size;
+        combined.current_size = this.current_size + source.current_size;
+        combined.people = new Employee[combined.maximum_size];
+
+        for (int i = 0; i < this.current_size; i++){
+            combined.people[i] = this.people[i];
+            /*
+            combined.people[i*2] = this.people[i];
+            combined.people[i*2+1] = source.people[i];
+            if (this.people[i] == null || source.people[i] != null){
+                int currentIndex = i*2;
+                combined.people[currentIndex] = source.people[i];
+
+            }
+                */
+        }
+        int midCount = 0;
+        for (int j = this.current_size; j < combined.current_size; j++){
+            combined.people[j] = source.people[midCount];
+            midCount++;
+        }
+        this.maximum_size = combined.maximum_size;
+        this.current_size = combined.current_size;
+        this.people = combined.people;
     }
 
     public void copy_payroll(Payroll source) {
-	/* your code */
+	/* assign one Payroll to another
+    
+        Payroll has
+        maximum_size
+        current_size
+        people[]
+        */
+
+        this.maximum_size = source.maximum_size;
+        this.current_size = source.current_size;
+        this.people = new Employee[maximum_size];
+        for (int i = 0; i < current_size; i++) {
+            this.people[i] = source.people[i];
+        }
     }
 
     private Employee people[];
