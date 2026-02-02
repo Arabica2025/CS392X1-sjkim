@@ -9,6 +9,7 @@ public class Assign02_01 {
      */
     public static void main(String[] args) {
 	// Please give your implementation here
+    // initialize the variable to 1 to start the iteration until it reaches to the end of int digits
         int x = 1; // 00000001
         int count = 0;
 
