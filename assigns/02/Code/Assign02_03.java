@@ -27,10 +27,12 @@ public class Assign02_03 {
 		Integer[] testArr2 = {0, -1, 2, -3, 1};
 		Integer[] testArr3 = {1, 2, 3, 4, 5, 6};
 		Integer[] testArr4 = {10, 15, 3, 1};
+		Integer[] testArr5 = {5, 7, 1, 2, 8, 4, 3};
 
 		System.out.println("Test Array 1: " + solve_3sum(testArr1));
 		System.out.println("Test Array 2: " + solve_3sum(testArr2));
 		System.out.println("Test Array 3: " + solve_3sum(testArr3));
 		System.out.println("Test Array 4: " + solve_3sum(testArr4));
+		System.out.println("Test Array 5: " + solve_3sum(testArr5));
 	}
 }
