@@ -80,7 +80,6 @@ public class Assign02_02 {
     public static void main(String[] args) {
 	// Please write some testing code for your implementation of 'indexOf'
         Integer[] testArr = {1,2,3,4,5};
-        System.out.println(testArr.length); // expect 11
         System.out.println("test indexOf 3: " + indexOf(testArr, 3));
         System.out.println("test indexOf 2: " + indexOf(testArr, 2));
         System.out.println("test indexOf 5: " + indexOf(testArr, 5));
