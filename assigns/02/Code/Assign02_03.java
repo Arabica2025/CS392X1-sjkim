@@ -7,7 +7,7 @@ public class Assign02_03 {
 	// Why is your implementation soft O(n^2)?
 
 		// sort the array first O(n log n)
-		mergeSort(A, 0, A.length-1);
+		//mergeSort(A, 0, A.length-1);
 
 
 		/*  e.g. {1,2,3,4,5}
@@ -15,15 +15,15 @@ public class Assign02_03 {
 
 		i: start from the begining
 		k: start from the end
-		j: start from i + 1
-		{i, j, elem, elm, k}
-
+		j: start from k-1
+		{i, elem, elem, j, k}
+		
 		*/
 			//System.out.println("Current i: " + i);
-			for (int k = A.length-1; k >= 2; k--){
+			for (int k = A.length-1; k >= 2; k--){ // lower bound restricted to index 2 because we don't want to touch either i or j
 				//System.out.println("Current k: " + k);
 				int i = 0;
-				int j = A.length-1;
+				int j = k-1;
 				//System.out.println("Current j: " + j);
 				//System.out.println();
 				
@@ -141,10 +141,10 @@ public class Assign02_03 {
 	public static void main(String[] args) {
 	// Please write some code here for testing solve_3sum
 		Integer[] testArr1 = {1, 2, 3, 4, 5};
-		Integer[] testArr2 = {0, -1, 2, -3, 1};
+		Integer[] testArr2 = {-3, -1, 0, 1, 2};
 		Integer[] testArr3 = {1, 2, 3, 4, 5, 6};
-		Integer[] testArr4 = {10, 15, 3, 1};
-		Integer[] testArr5 = {5, 7, 1, 2, 8, 4, 3};
+		Integer[] testArr4 = {1, 3, 10, 15};
+		Integer[] testArr5 = {1, 2, 3, 4, 5, 7, 8};
 
 		System.out.println("Test Array 1: " + solve_3sum(testArr1));
 		System.out.println("Test Array 2: " + solve_3sum(testArr2));
