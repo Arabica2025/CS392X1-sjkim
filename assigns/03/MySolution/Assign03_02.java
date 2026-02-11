@@ -62,23 +62,6 @@ public class Assign03_02 {
 		// if empty: true
 		// if not empty: false
     }
-
-
-// 		FnList<Character> stack = FnListSUtil.nil();
-// for (int i = 0; i < text.length(); i++) {
-//     char ch = text.charAt(i);
-//     if (ch == '(' || ch == '[' || ch == '{') {
-//         stack = FnListSUtil.cons(ch, stack);     // push
-//     } else {
-//         if (stack.nilq()) return false;          // no opener
-//         char open = stack.hd();                  // top
-//         if (!((open=='(' && ch==')') ||
-//               (open=='[' && ch==']') ||
-//               (open=='{' && ch=='}'))) return false;
-//         stack = stack.tl();                      // pop
-//     }
-// }
-// return stack.nilq();
 		// if it is balanced, then the reversed version of the original
 		// must be same -> not for this problem... :(
 		// final FnList<Character>[] revTextStack = new FnList[]{FnListSUtil.reverse(textStack)}; 
@@ -95,11 +78,6 @@ public class Assign03_02 {
 		// 		return false;
 		// 	}
 		// }
-
-
-		
-
-
 	// helper method to check original with reversed version
 	// private static Predicate<? super T> reverseCheck(FnList<Character> original, FnList<Character> rev){
 	// 	while(original.consq()){
