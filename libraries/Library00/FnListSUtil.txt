@@ -1,4 +1,4 @@
-package libraries.Library00;
+package Library00;
 
 import libraries.Library00.*;
 // javac: compiler
