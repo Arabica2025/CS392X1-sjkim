@@ -1,4 +1,4 @@
-package libraries.Library00;
+package Library00;
 
 public class FnList<T> {
     private Node root;
