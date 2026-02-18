@@ -1,5 +1,4 @@
-package Library00.MyStack;
+package Library.MyStack;
 
-public class MyStackEmptyExn extends RuntimeException{
-    
+public class MyStackEmptyExn extends RuntimeException {
 }

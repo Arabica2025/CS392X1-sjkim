@@ -1,38 +1,39 @@
-package Library00.MyStack;
+package Library.MyStack;
+
+import java.util.function.Consumer;
+import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 
 interface MyStack<T> {
-    // generic interface
-    /* a way to store methods or types 
-     */
-
+//
     int size();
-
-    boolean isFull(); // check if it's full
-    boolean isEmpty();// check if it's empty
-
-    /*
-    $raw
-    $opt
-    $exn
-    */
-    // raw: external approach; not caller's responsibility to check special cases
-    // opt, exn: internal approach; it is caller's responsibility to check special cases
-
-    // top: like a peak(); returns the first element (element at the top)
+//
+    boolean isFull(); // checks for fullness
+    boolean isEmpty(); // checks for emptiness
+//
     T top$raw(); // defined if !isEmpty()
-    T top$opt(); // same with top$raw; but T is optional here; it is for special cases; have to check if the return value is not null when using this method
-    T top$exn(); throws MyStackEmptyExn; // defined if !isEmpty(); throw exception if special cases
-
-    // pop: gives and removes first element from the stack
-    T pop$raw();
-    T pop$opt();
-    T pop$exn();
-
-    // push: guranteed that there is a space in the stack, push each element inside the stack
-    void push$raw(T itm);
-    void push$exn(T itm) throws MyStackEmptyExn;    
-    boolean push$opt(T itm);
-
-
-
-}
+    T top$opt(); // defined if !isEmpty() // T is optional
+    T top$exn() throws MyStackEmptyExn; // defined if !isEmpty() 
+//
+    T pop$raw(); // defined if !isEmpty()
+    T pop$opt(); // defined if !isEmpty() // T is optional
+    T pop$exn() throws MyStackEmptyExn; // defined if !isEmpty() 
+//
+    void push$raw(T itm); // defined if !isFull()
+    void push$exn(T itm) throws MyStackFullExn; // defined if !isFull()
+    boolean push$opt(T itm); // defined if !isFull() // true/false: succ/fail
+//
+    void System$out$print();
+//
+    void foritm(Consumer<? super T> work);
+    void iforitm(BiConsumer<Integer, ? super T> work);
+//
+    void rforitm(Consumer<? super T> work);
+    void irforitm(BiConsumer<Integer, ? super T> work);
+//
+/*
+    void forall(Predicate<? super T>);
+    void iforall(BiPredicate<? super T>);
+*/
+//
+} // end of [interface MyStack<T>{...}]
