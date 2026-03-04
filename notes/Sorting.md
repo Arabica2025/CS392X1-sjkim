@@ -61,4 +61,23 @@ time complexity: $O(n^2)$
 - after the first conditional swap to the end of the array, the last element must be the biggest
 - so we start another conditional swap from the beginning, but this time it is from index `0` to index `array.length()-2` (1 less than before to exclude the last element to consider swapping)
 
+## 5. Merge Sort
+### Divide and Conquer and Assemble
+[left] | [right]
+1. sort left
+2. sort right
+3. merge left and right
+4. repeat until reach to the base case
+
+```Java
+void mergeSort(int[] xs){
+    // pseudo codes
+    (first, second) = split(xs)
+    first_prime = mergeSort(first)
+    second_prime = mergeSort(second)
+
+    result = merge(first_prime, second_prime)
+    return result
+}
+```
 
