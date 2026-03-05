@@ -13,7 +13,7 @@ public class Assign03_02 {
 	// appearing in [text]. This method should return
 	// true if and only if the parentheses/brackets/braces
 	// in [text] are balenced.
-	// Your solution must make proper use of FnList (as a stack)!
+	// Your solution must make proper use of MyStack!
 	//
 
 		// // create a new default FnList to store text
@@ -62,7 +62,6 @@ public class Assign03_02 {
 		// if empty: true
 		// if not empty: false
     }
-// return stack.nilq();
 		// if it is balanced, then the reversed version of the original
 		// must be same -> not for this problem... :(
 		// final FnList<Character>[] revTextStack = new FnList[]{FnListSUtil.reverse(textStack)}; 
@@ -79,11 +78,6 @@ public class Assign03_02 {
 		// 		return false;
 		// 	}
 		// }
-
-
-		
-
-
 	// helper method to check original with reversed version
 	// private static Predicate<? super T> reverseCheck(FnList<Character> original, FnList<Character> rev){
 	// 	while(original.consq()){

@@ -2,73 +2,56 @@ package Library00.FnStrn;
 
 import Library00.FnStrn.*;
 
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
-/*
-import java.util.function.ToIntBiFunction;
-*/
+import java.util.function.*;
+
+
 
 public class FnStrnSUtil {
-//
-    // HX: This should be O(1)
-    public static int length(FnStrn cs) {
-	return cs.length();
+    // Functional String Static Util
+
+    // this should be O(1)
+    public static int length(FnStrn str){
+        return str.length();
     }
-    // HX: This should be O(1)
-    public static boolean nilq(FnStrn cs) {
-	return (cs.length() == 0);
+    // this should be O(1)
+    public static boolean consq(FnStrn str){
+        return (str.length() >= 1);
     }
-    // HX: This should be O(1)
-    public static boolean consq(FnStrn cs) {
-	return (cs.length() >= 1);
+    // this should be O(1)
+    public static boolean nilq(FnStrn str){
+        return (str.length() == 0);
     }
-//
-    public static FnStrn reverse(FnStrn cs) {
-	char res[];
-	int ln = cs.length();
-	res = new char[ln];
-/*
-        for (int i = 0; i < ln; i += 1) {
-	    res[i] = cs.getAt(ln-1-i);
-	}
-*/
-	iforitm(cs,
-	  (i, c1) -> { res[ln-1-i] = c1; }
-	);
-	return new FnStrn(res);
+
+    // for each item, we perform a certain given task.
+    public static<T> void forItem(FnStrn str, Consumer<? super Character> work){
+        for (int i = 0; i < str.length(); i += 1){
+            work.accept(str.getAt(i));
+        }
+        return;
     }
-//
-    public static
-	void foritm(FnStrn cs, Consumer<? super Character> work) {
-	for (int i = 0; i < cs.length(); i += 1) {
-	    work.accept(cs.getAt(i));
-	}
-	return;
+
+    public static boolean forall(FnStrn str, Predicate<? super Character> predicate){
+        for (int i = 0; i < str.length(); i +=1){
+            if (!predicate.test(str.getAt(i))){
+                return false;
+            }
+        }
+        return true;
     }
-//
-    public static
-	boolean forall(FnStrn cs, Predicate<? super Character> pred) {
-	for (int i = 0; i < cs.length(); i += 1) {
-	    if (!pred.test(cs.getAt(i))) return false;
-	}
-	return true;
+
+    public static FnStrn reverse(FnStrn str){
+        // 1. ordinary style
+        char resolve[];
+        int ln = str.length();
+        resolve = new char[ln];
+
+        // below looks like foritem that loops through the end
+        // for(int i=0; i< ln; i+=1){
+        //     resolve[i] = str.getAt(ln-1-i);
+        // }
+        iforitm(str, 
+            (i,ch1) -> {resolve[ln-1-i] = ch1;}
+        );
+        return new FnStrn(resolve);
     }
-//
-    public static
-	void iforitm(FnStrn cs, BiConsumer<Integer, ? super Character> work) {
-	for (int i = 0; i < cs.length(); i += 1) {
-	    work.accept(i, cs.getAt(i));
-	}
-	return;
-    }
-    public static
-	boolean iforall(FnStrn cs, BiPredicate<Integer, ? super Character> pred) {
-	for (int i = 0; i < cs.length(); i += 1) {
-	    if (!pred.test(i, cs.getAt(i))) return false;
-	}
-	return true;
-    }
-//
-} // end of [public class FnStrnSUtil{...}]
+}

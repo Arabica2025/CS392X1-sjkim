@@ -1,10 +1,9 @@
-/*
-HX-2026-02-13: 20 points
-*/
-import MyLibrary.FnList.*;
-import MyLibrary.FnStrn.*;
+package MyLibrary;
 
-public class Assign04_02 {
+import MyLibrary.FnStrn.*;
+import MyLibrary.FnList.*;
+
+public class concatListOfStrn {
 	private static int listLength = 0;
 	private static int iterate = 0;
 
@@ -39,27 +38,4 @@ public class Assign04_02 {
 		return new FnStrn(outputarr);
 		
     } 
-    public static void main(String[] argv) {
-	// Please write some testing code for your 'FnList$FnStrn_concate"
-
-	// nested FnList with FnStrn to create FnList<FnStrn> object
-		FnList<FnStrn> testConcat1 =
-			FnListSUtil.cons(new FnStrn("a"),
-			FnListSUtil.cons(new FnStrn("bc"),
-			FnListSUtil.cons(new FnStrn("def"), FnListSUtil.nil())));
-
-		FnStrn testc1 = FnList$FnStrn_concate(testConcat1);
-		FnStrnSUtil.foritm(testc1, ch -> System.out.print(ch));
-    
-		System.out.println();
-		
-		FnList<FnStrn> testConcat2 = 
-			FnListSUtil.cons(new FnStrn("fed"),
-			FnListSUtil.cons(new FnStrn("cb"),
-			FnListSUtil.cons(new FnStrn("a"), FnListSUtil.nil())));
-
-
-		FnStrn testc2 = FnList$FnStrn_concate(testConcat2);
-		FnStrnSUtil.foritm(testc2, ch -> System.out.print(ch));
-	}
-} // end of [public class Assign04_02{...}]
+}
