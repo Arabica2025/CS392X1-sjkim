@@ -1,6 +1,11 @@
 package MyLibrary.Sorting;
 
-class SrtArr implements SrtArrInterface{
+public class SrtArr implements SrtArrInterface{
+    // change: forgot to add constructor
+    int[] arr;
+    public SrtArr(int[] arr){
+        this.arr = arr;
+    }
 
     /* Swaping Utility for int[] O(1)*/
     private static void swap(int[] arr, int a, int b){

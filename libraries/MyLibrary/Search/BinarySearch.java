@@ -1,6 +1,13 @@
 package MyLibrary.Search;
 
-public class BinarySearch {
+public class BinarySearch<T> {
+    // changes: forgot to add constructor
+    T[] array;
+    T key;
+        public BinarySearch(T[] array, T key) {
+        this.array = array;
+        this.key = key;
+    }
         public static <T extends Comparable<T> > int indexOf(T[] a, T key) {
 	// a recursive implementation of 'indexOf' 
         if (key == null || a == null || a.length == 0){

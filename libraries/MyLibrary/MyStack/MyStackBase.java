@@ -1,7 +1,7 @@
-package Library.MyStack;
+package MyLibrary.MyStack;
 
-import Library.FnList.*;
-import Library.MyRefer.*;
+import MyLibrary.FnList.*;
+import MyLibrary.MyRefer.*;
 import java.util.function.Consumer;
 import java.util.function.BiConsumer;
 
