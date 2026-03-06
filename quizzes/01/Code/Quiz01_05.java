@@ -14,12 +14,16 @@
  is allowed here.
 //
 */
+import MyLibrary.FnList.*;
+import java.util.function.ToIntBiFunction;
 abstract public class Quiz01_05 {
     public static<T>
 	FnList<T> someSort
 	(FnList<T> xs, ToIntBiFunction<T,T> cmp) {
 	// HX-2025-10-15:
 	// This one is abstract, that is, not implemented
+
+		return Assign05_01.insertionSort(xs, cmp);
     }
     public static<T>
 	FnList<T> someRevStableSort
@@ -27,6 +31,8 @@ abstract public class Quiz01_05 {
 	// HX-2025-10-15:
 	// Please implement a reverse-stable sorting method
 	// based on someSort
+		FnList<T> reversed = FnListSUtil.reverse(xs);
+		return someSort(reversed,cmp);
     }
 }
 

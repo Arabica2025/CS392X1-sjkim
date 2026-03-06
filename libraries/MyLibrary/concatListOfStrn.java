@@ -7,6 +7,12 @@ public class concatListOfStrn {
 	private static int listLength = 0;
 	private static int iterate = 0;
 
+	// change: forgot to add constructor
+	FnList<FnStrn> xs;
+	public concatListOfStrn(FnList<FnStrn> xs) {
+		this.xs = xs;
+	}
+
     static FnStrn
 	FnList$FnStrn_concate(FnList<FnStrn> xs) {
 	// Given a list of strings, this method return the

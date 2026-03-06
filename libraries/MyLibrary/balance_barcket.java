@@ -5,6 +5,11 @@ import MyLibrary.FnList.FnListSUtil;
 import MyLibrary.FnStrn.*;
 
 public class balance_barcket {
+	// change: forgot to add constructor
+	String text;
+	public balance_barcket(String text){
+		this.text = text;
+	}
     static boolean balencedqFnList(String text) {
 	//
 	// There are only '(', ')', '[', ']', '{', and '}'

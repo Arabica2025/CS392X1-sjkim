@@ -1,6 +1,11 @@
 package MyLibrary;
 
 public class f91_tail_recursion {
+    // change: forgot to add constructor
+    int n;
+    public f91_tail_recursion(int n){
+        this.n = n;
+    }
     private static int tailF91(int n, int iteration){
         // if we don't have any iterations to loop through, we just return what's left 
         if (iteration == 0){

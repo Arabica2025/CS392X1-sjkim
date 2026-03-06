@@ -114,15 +114,11 @@ public class FnListSUtil {
 	);
 	System.out.print(")");
     }
-<<<<<<< HEAD
-
-} // end of [public class FnListSUtil{...}]
-=======
 //
     public static<T>
 	FnList<T>
 	insertSort(FnList<T> xs, ToIntBiFunction<T,T> cmp) {
-	if (nilq(xs)) {
+	if (xs.nilq()) {
 	    return xs;
 	} else {
 	    return
@@ -132,7 +128,7 @@ public class FnListSUtil {
     private static<T>
 	FnList<T>
 	insertSort_insert(FnList<T> xs, T x0, ToIntBiFunction<T,T> cmp) {
-	if (nilq(xs)) {
+	if (xs.nilq()) {
 	    return cons(x0, xs);
 	} else {
 	    final T hd = xs.hd();
@@ -146,4 +142,3 @@ public class FnListSUtil {
     }
 //
 } // end of [public class FnListSUtil{...}]
->>>>>>> upstream/main
