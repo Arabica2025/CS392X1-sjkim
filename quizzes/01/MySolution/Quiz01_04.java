@@ -29,7 +29,7 @@ public class Quiz01_04 {
 			LnList<T> temp = unsorted;
 			unsorted = unsorted.unlink();
 
-			if (sortedTail.hd1().compareTo(temp.hd1())<=0){ // if the first element <= second element
+			if (sortedTail.hd1().compareTo(temp.hd1())<=0){ // if the first element is less than second, 
 				// concat : [first, second ...]
 				sortedTail.link(temp);
 				// advance
@@ -37,11 +37,12 @@ public class Quiz01_04 {
 				continue;
 			}
 
-			// 
+			// if the first element is greater or equal to second, need to find the right place
 			LnList<T> before = temp.unlink();
 			LnList<T> beforeTail = before;
 			LnList<T> after = sorted;
 
+			// 
 			while(after.consq1() && after.hd1().compareTo(temp.hd1())<=0){
 				LnList<T> h = after;
 				after = after.unlink();
