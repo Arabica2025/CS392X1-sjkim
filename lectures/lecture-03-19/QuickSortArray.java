@@ -33,9 +33,13 @@ class QuickSortArray {
 
 	int im = arrayseg_pivot(xs, ia, iz, cmp);
 
-	quickSort_arrayseg_rand(xs, ia, im-1, cmp, rand);
-	quickSort_arrayseg_rand(xs, im+1, iz, cmp, rand);
-
+	if (ia+iz >= 2*im) {
+	    quickSort_arrayseg_rand(xs, ia, im-1, cmp, rand);
+	    quickSort_arrayseg_rand(xs, im+1, iz, cmp, rand);
+	} else {
+	    quickSort_arrayseg_rand(xs, im+1, iz, cmp, rand);
+	    quickSort_arrayseg_rand(xs, ia, im-1, cmp, rand);
+	}
 	return;
     }   
 }
