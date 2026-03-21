@@ -2,8 +2,10 @@ package MyLibrary.FnList;
 
 import MyLibrary.FnList.*;
 
+import java.util.Random;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.function.ToIntBiFunction;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 /*
@@ -116,5 +118,74 @@ public class FnListSUtil {
 	);
 	System.out.print(")");
     }
+
+	public static<T extends Comparable<T>> void quickSort_array(T[] xs){
+		quickSort_array(xs, (x1,x2) -> x1.compareTo(x2));
+		return;
+	}
+
+	public static<T> void quickSort_array(T[] xs, ToIntBiFunction<T,T> cmp){
+		quickSort_arrayseg_rand(xs, 0, xs.length-1,cmp,new Random());
+		return;
+	}
+
+	private static<T> void array_swap(T[] xs, int i, int j){
+		T tmp = xs[i];
+		xs[i] = xs[j];
+		xs[j] = tmp;
+	}
+
+	private static<T> int arrayseg_pivot(T[] xs, int ia, int iz, ToIntBiFunction<T,T> cmp){
+		// assume pivot at the end of arr
+		// split arr in half
+		// 1 after the second half is the pivot position
+
+		// first half: pivot < element
+		// secnod half: pivot >= element
+		// if both case match, swap
+
+		// edge case 1(extreme): all elements in the arr are equal => O(n^2)
+		// how to solve:
+		// two pointers squeezing in
+		
+
+		// K & R bug
+		// two pointers a,b pointing to the same thing
+		// finish pivoting strategy
+		return 0;
+	}
+
+	private static<T> void quickSort_arrayseg_rand(T[] xs, int ia, int iz,ToIntBiFunction<T,T> cmp, Random rand){
+		int ln = iz-ia+1;
+		if (iz-ia <= 0){ // xs contains at most one element! (inclusive approach)
+			// in practice, we don't go all the way down to 0
+			// instead, we go down to some place like 10
+			// and call insertion sort to finish off to maximize efficiency
+			return;
+		}
+		int pivot = rand.nextInt() % ln;
+		pivot = (pivot >= 0) ? pivot : (ln+pivot); // 0 <= p0 <= ln-1
+		//always check for error with assert
+		assert(0 <= pivot && pivot <= ln-1);
+
+		// pivoting
+		// System.out.println("quickSort_arrayseg_rand: p0 = "+ p0);
+		array_swap(xs,pivot, iz);
+		
+		int mid= arrayseg_pivot(xs, ia, iz, cmp);
+
+		quickSort_arrayseg_rand(xs, ia, mid-1, cmp, rand);
+		quickSort_arrayseg_rand(xs, mid+1, iz, cmp, rand);
+
+		
+		// int len = xs.length;
+		// if (len<=1){
+		// 	return;
+		// } else{
+		// 	int ia = 0;
+		// 	int iz = len-1; // both min and max inclusive
+		// 	void quickSort_arrayseg_rand(xs, ia, iz, cmp, rand);
+		// }
+	}
 
 } // end of [public class FnListSUtil{...}]

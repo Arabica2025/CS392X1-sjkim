@@ -80,4 +80,37 @@ void mergeSort(int[] xs){
     return result
 }
 ```
+## 6. Quick Sort
+- Randomized Algorithm
+  - let's say we have a array of numbers<br>
+  [9,6,1,2,3,7,10]
+  - we pick a number called `pivot`
+    - `pivoting` must be randomized
+  - no need for additional space for sorting
+- one way to pick `pivot`: pick a middle value of the object(array, FnList, etc.)<br>
+  [9,6,1,**2**,3,7,10]
+- swap the `pivot` with the last element<br>
+  [9,6,1,10,3,7,**2**]
+- ask again after the class
+
+Time complexity
+$$\begin{aligned}
+T(n) = T(\frac{n}2) + T(\frac{n}2) + O(n) = 2 \times T(\frac{n}2) + O(n)\\
+\\
+T(n) = O(nlogn) = \tilde{O}(n)\\
+\\
+\text{regular situation: }\\
+T(\frac{n}3) + T(\frac{2n}3) = T(n) = O(nlogn)\\
+\\
+\text{extreme situation(worst case): }\\
+T(\frac{n}{100}) + T(\frac{99n}{100}) = T(n) = O(nlogn)
+\end{aligned}
+$$
+### More Properties of Quicksort
+- Quicksort is **NOT STABLE**.
+- Complexity = $O(n^2) \rightarrow \text{ worst-case}$
+  - average case: $O(nlogn)$
+- quicksort is the most widely used sorting algorithm
+  - No extra memory required
+
 

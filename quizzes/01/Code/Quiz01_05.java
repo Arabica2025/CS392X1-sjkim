@@ -23,7 +23,7 @@ abstract public class Quiz01_05 {
 	// HX-2025-10-15:
 	// This one is abstract, that is, not implemented
 
-		return Assign05_01.insertionSort(xs, cmp);
+		return Assign05_01.insertSort(xs, cmp);
     }
     public static<T>
 	FnList<T> someRevStableSort
