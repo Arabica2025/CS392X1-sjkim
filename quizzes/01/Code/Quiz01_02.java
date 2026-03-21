@@ -27,8 +27,23 @@ public class Quiz01_02 {
 
 	// sort the array first: O(n) + O(nlogn)
 	int[] sorted = wrapperBigToSmall(A);
+	// compute absolute value of each element before sorting (O(n)); handling negative values!
+	for (int i = 0; i < sorted.length; i++){
+		if (sorted[i] < 0){
+			sorted[i] = sorted[i] * -1;
+		}
+	}
 	SrtArr merge = new SrtArr(sorted);
 	merge.mergeSort(sorted);
+
+	/*
+	Alternative plan:
+	 i  j 
+	[1, 2, ... n]
+	k iteration: inner loop (search for element A[k] for every A[i] * A[j])
+	j iteration: outer loop (after searching for all distinct elements for A[i] * A[j], if not found, j goes from i+1 to length-1)
+
+	*/
 
 	for (int k = sorted.length-1; k >= 2; k--){
 		int i =0;
@@ -76,9 +91,11 @@ public class Quiz01_02 {
 	
     public static void main(String[] args) {
 	// Please write some code here for testing solve_3prod
+		Integer[] testNegarr = {-3,2, -9, 1, 3, -7};
 		Integer[] testArr1 = {1, 2, 3, 4, 5};
 		Integer[] testArr2 = {2, 4, 5, 6, 7, 8};
 
+		System.out.println(solve_3prod(testNegarr));
 		System.out.println(solve_3prod(testArr1)); // Expected: false
 		System.out.println(solve_3prod(testArr2)); // Expected: true
 
