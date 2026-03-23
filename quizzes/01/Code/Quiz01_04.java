@@ -30,10 +30,10 @@ public class Quiz01_04 {
 
 			// if left is the smallest value, go straight to the first place
 			if (left.hd1().compareTo(tail.hd1()) >= 0){ // if left < the smallest element in sorted list
-				beforeTail = tail;
+				beforeTail = tail; // save the current tail
 				tail.link(left); // tail -> sorted
 				tail = left; // update sorted so that it starts from tail and goes -> sorted
-			} else if (beforeTail != null && left.hd1().compareTo(beforeTail.hd1())>=0){
+			} else if (beforeTail != null && left.hd1().compareTo(beforeTail.hd1())>=0){ // if left > wha
 				beforeTail.unlink();
 				beforeTail.link(left);
 				left.link(tail);
