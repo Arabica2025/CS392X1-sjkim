@@ -2,8 +2,6 @@
 // HX: 50 points
 //
 
-import MyLibrary.concatListOfStrn;
-
 public class Quiz01_04 {
     public static
 	<T extends Comparable<T>>
@@ -21,6 +19,7 @@ public class Quiz01_04 {
 
 		LnList<T> sorted = xs; // assign xs temporarily; we will replace each element with sorted elements
 		LnList<T> tail = sorted; // keep track of the element at the end of the sorted list
+		LnList<T> beforeTail = null; // element right before tail -> this is for nearly sorted list
 		LnList<T> unsorted = sorted.unlink();
 
 		while(unsorted.consq1()){
@@ -31,9 +30,16 @@ public class Quiz01_04 {
 
 			// if left is the smallest value, go straight to the first place
 			if (left.hd1().compareTo(tail.hd1()) >= 0){ // if left < the smallest element in sorted list
+				beforeTail = tail; // save the current tail
 				tail.link(left); // tail -> sorted
 				tail = left; // update sorted so that it starts from tail and goes -> sorted
-			} else{// traverse right to find the "right value"
+			} else if (beforeTail != null && left.hd1().compareTo(beforeTail.hd1())>=0){ // if left > wha
+				beforeTail.unlink();
+				beforeTail.link(left);
+				left.link(tail);
+				beforeTail = left;
+			} else{
+				// traverse right to find the "right value"
 				LnList<T> right = sorted;
 				boolean inserted = false;
 				while(right.consq1() && !inserted){
@@ -158,7 +164,7 @@ public class Quiz01_04 {
 		// test = LnListInsertSort(test);
 		LnList<Integer> sorted = LnListInsertSort(test);
 		
-		// printLnList(sorted);
+		printLnList(sorted);
 
 
         // LnList<Integer> test = new LnList<Integer>();
