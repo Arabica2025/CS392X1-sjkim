@@ -80,6 +80,7 @@ public class LnStrmSUtil {
        );
     }
 //
+// stream transformer: takes one stream and turn into another stream
     public static<T>
 	LnStrm<T> filter0
 	(LnStrm<T> fxs, Predicate<? super T> pred) {

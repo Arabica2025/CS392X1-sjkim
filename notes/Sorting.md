@@ -114,3 +114,33 @@ $$
   - No extra memory required
 
 
+
+## 
+### eager list
+- compute and load all elements immediately upon creation
+### lazy list
+- set up a mechanism that executes small task
+- defer computation of each element until it is actually accessed or needed
+```Python
+for i in range(10000..)
+```
+`range(1000...)` $\leftarrow$ can creat an object called `Generator`.
+
+lazy list -> stream (turn a set into a stream of numbers) -> Stream Consttructor
+(while Stream -> Stream Constructor, opague -> `nil`/`cons`)
+
+#### Full laziness
+- $O(1)$ time
+- refer `LnStrmSUtil.append0`
+
+E.g. searching prime numbers
+```
+2,3,4,5,6,7,8,9...
+```
+1. we circle the first element (2)
+2. take out all elements that are multiples of 2
+3. we circle the next element(3)
+4. take out all elements that are multiples of 3
+5. go on and on
+6. the circled ones are the prime numbers
+- > sieve method

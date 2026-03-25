@@ -1,3 +1,5 @@
+package Library00.LnStrm;
+
 //
 import Library00.FnList.*;
 import Library00.LnStrm.*;
