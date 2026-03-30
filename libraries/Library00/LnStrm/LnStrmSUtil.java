@@ -2,9 +2,12 @@
 package Library00.LnStrm;
 //
 import Library00.FnList.*;
+import Library00.FnTuple.FnTupl2;
+
 //
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+import java.util.function.ToIntBiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
@@ -100,5 +103,34 @@ public class LnStrmSUtil {
 	  }
        );
     }
+
+	public static<T>
+		LnStrm<T> merge0(LnStrm<T> fxs, LnStrm<T> fys, ToIntBiFunction<T,T> cmp){
+			return new LnStrm<T>(
+				() -> {
+					LnStcn<T> cxs = fxs.eval0();
+					LnStcn<T> cys = fys.eval0();
+					T hd1 = cxs.hd();
+					T hd2 = cys.hd();
+
+					int sgn = cmp.applyAsInt(hd1, hd2);
+
+					if (sgn <= 0){
+						return new LnStcn(hd1, merge0(cxs.tl(), fys), cmp);
+					} else {
+						return new LnStcn(hd2, merge0(fxs, cys.tl(), cmp));
+					}
+				}
+			);
+		}
+
+	public static LnStrm<FnTupl2<Integer,Integer>> matrixEnum(LnStrm<LnStrm<FnTupl2<Integer,Integer>>> fxss){
+		LnStcn<LnStrm<FnTupl2<Integer,Integer>>> cxss = fxss.eval0();
+		LnStrm<FnTupl2<Integer,Integer>> frow1 = cxss.hd();
+		LnStrm<FnTupl2<Integer,Integer>> frest= cxss.tl();
+		return new LnStcn(crow1.hd(), LnStrmSUtil.merge0(crow1.tl(), matrixEnum(frest), (x,y) -> {
+			return (cube_sum(x) <= cube_sum(y));
+		}));
+	}
 //
 } // end of [class LnStrmSUtil{...}]
