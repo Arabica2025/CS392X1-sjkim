@@ -1,5 +1,5 @@
 //
-package Library00.LnStrm;
+package MyLibrary.LnStrm;
 //
 import Library00.FnList.*;
 //
