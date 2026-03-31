@@ -13,8 +13,9 @@ cleanall:: ; rm -f *.class
 
 ###################################################################
 
-comp:: ; javac -cp .:$(Library00) LnStrm.java
-comp:: ; javac -cp .:$(Library00) LnStcn.java
-comp:: ; javac -cp .:$(Library00) LnStrmSUtil.java
+comp:: ; javac -cp .:$(MyLibrary) LnStrm.java
+comp:: ; javac -cp .:$(MyLibrary) LnStcn.java
+comp:: ; javac -cp .:$(MyLibrary) LnStrmSUtil.java
+comp:: ; javac -cp .:$(MyLibrary) LnStrmTest.java
 
 ########################(end of [Makefile])########################
