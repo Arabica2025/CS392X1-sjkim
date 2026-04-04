@@ -1,3 +1,5 @@
+package MyLibrary.MyStack;
+
 import MyLibrary.MyStack.*;
 
 public class MyStackListTest {
