@@ -5,8 +5,8 @@ import MyLibrary.MyMap00.*;
 import java.util.function.BiConsumer;
 import MyLibrary.LnStrm.*;
 
-import Library00.MyMap00.MyMap00FullExn;
-import Library00.MyMap00.MyMap00NoKeyExn;
+import MyLibrary.MyMap00.MyMap00FullExn;
+import MyLibrary.MyMap00.MyMap00NoKeyExn;
 
 public class Assign08_02<V>
     implements MyMap00<String, V> {
@@ -64,7 +64,7 @@ public class Assign08_02<V>
         int hshidx = hash(key);
 
         for (int i = 0; i < capacity; i++){
-            int idx = (hshidx + (i*i)) % capacity;
+            int idx = (hshidx + (i*i)) % capacity; // quadratic probing
 
             FnTupl2<String, V> kv = table[idx];
 

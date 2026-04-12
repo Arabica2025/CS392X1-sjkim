@@ -1,4 +1,3 @@
-import MyLibrary.FnList.*;
 import MyLibrary.LnList.*;
 import MyLibrary.FnTuple.*;
 import MyLibrary.MyMap00.*;
