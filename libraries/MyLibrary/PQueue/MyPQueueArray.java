@@ -177,24 +177,24 @@ public class MyPQueueArray<T> extends MyPQueueBase<T> {
         }
     }
 
-    // public static void main(String args[]){
-    //     MyPQueueArray.Compare<Integer> cmp = new MyPQueueArray.Compare<>(
-    //             (pair, out) -> out[0] = pair.a - pair.b
-    //     );
+    public static void main(String args[]){
+        MyPQueueArray.Compare<Integer> cmp = new MyPQueueArray.Compare<>(
+                (pair, out) -> out[0] = pair.a - pair.b
+        );
 
-    //     MyPQueueArray<Integer> pqtest = new MyPQueueArray<>(16, cmp);
+        MyPQueueArray<Integer> pqtest = new MyPQueueArray<>(16, cmp);
 
-    //     int[] inputtest = {5,1,3,4,19,25,82,11,2,9};
-    //     System.out.println("1. enqueue test");
-    //     for (int x : inputtest){
-    //         pqtest.enque$exn(x);
-    //         System.out.println("Enqueue " + x);
-    //     }
-    //     // must dequeue from the highest value to lowest value(max heap Priority Queue)
-    //     System.out.println("2. dequeue test");
-    //     while (pqtest.size() > 0){
-    //         int v = pqtest.deque$opt();
-    //         System.out.println("Dequeue " + v);
-    //     }
-    // }
+        int[] inputtest = {5,1,3,4,19,25,82,11,2,9};
+        System.out.println("1. enqueue test");
+        for (int x : inputtest){
+            pqtest.enque$exn(x);
+            System.out.println("Enqueue " + x);
+        }
+        // must dequeue from the highest value to lowest value(max heap Priority Queue)
+        System.out.println("2. dequeue test");
+        while (pqtest.size() > 0){
+            int v = pqtest.deque$opt();
+            System.out.println("Dequeue " + v);
+        }
+    }
 }

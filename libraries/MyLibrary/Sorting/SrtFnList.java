@@ -53,4 +53,10 @@ class SrtFnList implements SrtFnListInterface<Integer>{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'mergeSort'");
     }
+
+    @Override
+    public FnList<Integer> quickSort(FnList<Integer> xs) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'quickSort'");
+    }
 }
