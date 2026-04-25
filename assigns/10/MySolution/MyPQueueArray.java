@@ -195,8 +195,8 @@ public class MyPQueueArray<T extends Comparable<T>> extends MyPQueueBase<T> {
     }
 
     // Generic Object input using Comparable interface
-    public T deque$opt(){
-        return (isEmpty()? null:deque$raw(0));
+    public T deque$opt(int root){
+        return (isEmpty()? null:deque$raw(root));
     }
 
     // root is always index 0 

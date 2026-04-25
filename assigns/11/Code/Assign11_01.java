@@ -10,19 +10,19 @@
 // in FnGtree to solve Sudoku puzzles. Your solution should
 // be able to solve "hard" Sudoku puzzles effectively.
 //
-import Library00.FnList.*;
-import Library00.LnStrm.*;
+import MyLibrary.FnList.*;
+import MyLibrary.LnStrm.*;
 import Library00.FnGtree.*;
 
 class Sudoku {
     // Please find a way to represent a Sudoku puzzle
 }
 
-public class Quiz11_01 {
-    public LnStrm<Sudoku> Soduku_dfs_solve(Sudoku puzzle) {
+public class Assign11_01 {
+    public LnStrm<Sudoku> Sudoku_dfs_solve(Sudoku puzzle) {
 	return null;
     }
-    public LnStrm<Sudoku> Soduku_bfs_solve(Sudoku puzzle) {
+    public LnStrm<Sudoku> Sudoku_bfs_solve(Sudoku puzzle) {
 	return null;
     }
 //
