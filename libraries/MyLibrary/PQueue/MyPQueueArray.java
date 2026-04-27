@@ -15,7 +15,7 @@ import java.util.function.BiConsumer;
     Max Heap
  */
 
-public class MyPQueueArray<T> extends MyPQueueBase<T> {
+public class MyPQueueArray<T extends Comparable<T>> extends MyPQueueBase<T> {
     public static class Pair<T>{
         T a;
         T b;
@@ -107,6 +107,15 @@ public class MyPQueueArray<T> extends MyPQueueBase<T> {
         return rmd;
     }
 
+    public T deque$raw(int root){
+        T rm = array[root]; // save the root element to return
+        array[root] = array[size()-1]; // move the last to the top
+        array[size()-1] = null; //empty the last 
+        size-=1; //decrement size
+        siftDown();
+        return rm;
+    }
+
 
     // no need to check for no child case
     // as per !isEmpty() for $deque$raw()
@@ -118,6 +127,41 @@ public class MyPQueueArray<T> extends MyPQueueBase<T> {
         otherwise, return right child
          */
         return (rchild >= size() || cmp.great_eq(array[lchild], array[rchild])) ? lchild : rchild;
+    }
+
+    private <T extends Comparable<T>> int cmpchild(T lchild, T rchild){
+        // compare two children
+        // if we don't have right child OR left child >= right child
+            // return 0
+            // otherwise return 1
+            // binary representation
+        // compare generic inputs
+        return (rchild == null || lchild.compareTo(rchild) >= 0) ? 0 : 1;
+    }
+
+    private void siftDown(){
+        int i = 0; // start from the root
+        while(true){
+            int lchildidx = (2 * i) + 1;
+            int rchildidx = (2 * i) + 2;
+
+            // get the children to sift down
+            T lchild = (lchildidx < size()) ? array[lchildidx] : null;
+            T rchild = (rchildidx < size()) ? array[rchildidx] : null;
+
+            int childindicate = cmpchild(lchild, rchild);
+
+            int childidx = (childindicate == 0) ? lchildidx : rchildidx;
+            // if the current element is greater than or equal to the child element
+            // we are done sifting down
+            // this is for deque so we sift down until the current element is less than the child
+            if (array[i].compareTo(array[childidx]) >= 0){
+                break;
+            }
+
+            exchange(i, childidx);
+            i = childidx;
+        }
     }
 
 
@@ -142,13 +186,27 @@ public class MyPQueueArray<T> extends MyPQueueBase<T> {
         }
     }
 
-
+    // Generic Integer input only
     public T deque$exn() throws MyPQueueFullExn{
         if (!isEmpty()){
             throw new MyPQueueFullExn();
         }
         return deque$raw();
     }
+
+    // Generic Object input using Comparable interface
+    public T deque$opt(int root){
+        return (isEmpty()? null:deque$raw(root));
+    }
+
+    // root is always index 0 
+    public T deque$exn(int root) throws MyPQueueEmptyExn{
+        if (!isEmpty()){
+            throw new MyPQueueEmptyExn();
+        }
+        return deque$raw(root);
+    }
+    
 
     public void enque$raw(T itm){
         if (isEmpty()){
@@ -164,6 +222,38 @@ public class MyPQueueArray<T> extends MyPQueueBase<T> {
         siftUp(i);
     }
 
+    // generic input; other than Integer can be parameterized
+    public void enque$raw(T itm, int last){
+        if (isEmpty()){
+            array[0] = itm;
+            size+=1;
+            return;
+        }
+        // idx is always the last or size()
+        array[last] = itm;
+        size+=1;
+        siftUp(last);
+    }
+
+    public void enque$exn(T itm, int last) throws MyPQueueEmptyExn{
+        boolean res = enque$opt(itm, last);
+        if (!res){
+            throw new MyPQueueEmptyExn();
+        } else {
+            return;
+        }
+    }
+
+    public boolean enque$opt(T itm, int last){
+        if (isFull()){
+            return false;
+        } else {
+            // last parameter is always the last index
+            enque$raw(itm, last);
+            return true;
+        }
+    }
+
     private void siftUp(int current){
         while(current > 0){
             int parent = (current - 1) / 2;
@@ -177,24 +267,40 @@ public class MyPQueueArray<T> extends MyPQueueBase<T> {
         }
     }
 
-    public static void main(String args[]){
-        MyPQueueArray.Compare<Integer> cmp = new MyPQueueArray.Compare<>(
-                (pair, out) -> out[0] = pair.a - pair.b
-        );
-
-        MyPQueueArray<Integer> pqtest = new MyPQueueArray<>(16, cmp);
-
-        int[] inputtest = {5,1,3,4,19,25,82,11,2,9};
-        System.out.println("1. enqueue test");
-        for (int x : inputtest){
-            pqtest.enque$exn(x);
-            System.out.println("Enqueue " + x);
-        }
-        // must dequeue from the highest value to lowest value(max heap Priority Queue)
-        System.out.println("2. dequeue test");
-        while (pqtest.size() > 0){
-            int v = pqtest.deque$opt();
-            System.out.println("Dequeue " + v);
+    // helper for generic type
+    private void siftUp(){
+        int currentidx = size() - 1; // index of input; start from the last element
+        while(currentidx > 0){
+            int parentidx = (currentidx - 1) / 2;
+            // if current element is greater than parent element
+            // sift up
+            if (array[currentidx].compareTo(array[parentidx])>0){
+                exchange(currentidx, parentidx);
+                currentidx = parentidx; // update current idx to parent
+            } else {
+                break;
+            }
         }
     }
+
+    // public static void main(String args[]){
+    //     MyPQueueArray.Compare<Integer> cmp = new MyPQueueArray.Compare<>(
+    //             (pair, out) -> out[0] = pair.a - pair.b
+    //     );
+
+    //     MyPQueueArray<Integer> pqtest = new MyPQueueArray<>(16, cmp);
+
+    //     int[] inputtest = {5,1,3,4,19,25,82,11,2,9};
+    //     System.out.println("1. enqueue test");
+    //     for (int x : inputtest){
+    //         pqtest.enque$exn(x);
+    //         System.out.println("Enqueue " + x);
+    //     }
+    //     // must dequeue from the highest value to lowest value(max heap Priority Queue)
+    //     System.out.println("2. dequeue test");
+    //     while (pqtest.size() > 0){
+    //         int v = pqtest.deque$opt();
+    //         System.out.println("Dequeue " + v);
+    //     }
+    // }
 }

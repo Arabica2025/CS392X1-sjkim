@@ -30,13 +30,36 @@ public class FnStrnSUtil {
         return;
     }
 
-    public static boolean forall(FnStrn str, Predicate<? super Character> predicate){
-        for (int i = 0; i < str.length(); i +=1){
-            if (!predicate.test(str.getAt(i))){
-                return false;
-            }
-        }
-        return true;
+//
+    public static
+	void foritm(FnStrn cs, Consumer<? super Character> work) {
+	for (int i = 0; i < cs.length(); i += 1) {
+	    work.accept(cs.getAt(i));
+	}
+	return;
+    }
+//
+    public static
+	boolean forall(FnStrn cs, Predicate<? super Character> pred) {
+	for (int i = 0; i < cs.length(); i += 1) {
+	    if (!pred.test(cs.getAt(i))) return false;
+	}
+	return true;
+    }
+//
+    public static
+	void iforitm(FnStrn cs, BiConsumer<Integer, ? super Character> work) {
+	for (int i = 0; i < cs.length(); i += 1) {
+	    work.accept(i, cs.getAt(i));
+	}
+	return;
+    }
+    public static
+	boolean iforall(FnStrn cs, BiPredicate<Integer, ? super Character> pred) {
+	for (int i = 0; i < cs.length(); i += 1) {
+	    if (!pred.test(i, cs.getAt(i))) return false;
+	}
+	return true;
     }
 
     public static FnStrn reverse(FnStrn str){
@@ -54,4 +77,5 @@ public class FnStrnSUtil {
         );
         return new FnStrn(resolve);
     }
+
 }
