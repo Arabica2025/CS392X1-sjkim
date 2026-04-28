@@ -28,9 +28,18 @@ For each (top-level) class you implement in MyLibrary,
 please create an object of that class.
 
 ## Quiz02_01: 50 points
+
 ## Quiz02_02: 50 points
+
 ## Quiz02_03: 50 points
+
 ## Quiz02_04: 30 points + 20 bonus
+Please choose this one or Quiz02_05
+
 ## Quiz02_05: 30 points + 20 bonus
+Please choose this one or Quiz02_04
+  
 ## Quiz02_06: 50 points
 
+##################################################################
+  
