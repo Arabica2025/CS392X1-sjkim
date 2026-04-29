@@ -1,3 +1,5 @@
+package MyLibrary.PQueue;
+// package declaration issue
 import java.util.function.Consumer;
 import java.util.function.BiConsumer;
 
@@ -17,9 +19,9 @@ import java.util.function.BiConsumer;
 
 public class MyPQueueArray<T extends Comparable<T>> extends MyPQueueBase<T> {
     public static class Pair<T>{
-        T a;
-        T b;
-        Pair(T a, T b){
+        public T a;
+        public T b;
+        public Pair(T a, T b){
             this.a = a;
             this.b = b;
         }
@@ -56,7 +58,7 @@ public class MyPQueueArray<T extends Comparable<T>> extends MyPQueueBase<T> {
     private int size;
     private T[] array;
     private Compare<T> cmp;
-    MyPQueueArray(int size, Compare<T> cmp){
+    public MyPQueueArray(int size, Compare<T> cmp){
         this.size = 0;
         this.array = (T[]) new Object[size];
         this.cmp = cmp;

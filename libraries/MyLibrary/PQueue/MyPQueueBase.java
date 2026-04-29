@@ -1,3 +1,5 @@
+package MyLibrary.PQueue;
+// package declaration issue
 public abstract class MyPQueueBase<T> implements MyPQueue<T> {
 //
     public
