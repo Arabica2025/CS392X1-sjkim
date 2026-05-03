@@ -12,7 +12,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.Predicate;
 //
-class LnStrmTest {
+public class LnStrmTest {
     public static LnStrm<Integer> intFrom(int start) {
 	return new LnStrm<Integer>(() -> new LnStcn<Integer>(start, intFrom(start+1)));
     }
@@ -55,22 +55,22 @@ class LnStrmTest {
        );
     }
 
-    public static void main(String[] args) {
-	LnStrm<Integer> intFrom2 = intFrom(2);
-	LnStrm<Integer> thePrimes = sieveMethod(intFrom2);
-	// thePrimes.foritm0((px) -> System.out.println(px));
+    // public static void main(String[] args) {
+	// LnStrm<Integer> intFrom2 = intFrom(2);
+	// LnStrm<Integer> thePrimes = sieveMethod(intFrom2);
+	// // thePrimes.foritm0((px) -> System.out.println(px));
 
 
-	LnStrm<Integer> ints1 = intFrom(0);
-	LnStrm<FnTupl2<Integer,Integer>> int2s1 =
-	    LnStrmSUtil.map0(ints1, (x) -> new FnTupl2<Integer,Integer>(1, x));
-	LnStrm<FnTupl2<Integer,Integer>> int2s2 =
-	    LnStrmSUtil.map0(ints1, (x) -> new FnTupl2<Integer,Integer>(1, x));
-	// int2s2.foritm0((xx) -> System.out.println(xx.toString()));
+	// LnStrm<Integer> ints1 = intFrom(0);
+	// LnStrm<FnTupl2<Integer,Integer>> int2s1 =
+	//     LnStrmSUtil.map0(ints1,  (x) -> new FnTupl2<Integer,Integer>(1, x));
+	// LnStrm<FnTupl2<Integer,Integer>> int2s2 =
+	//     LnStrmSUtil.map0(ints1, (x) -> new FnTupl2<Integer,Integer>(1, x));
+	// // int2s2.foritm0((xx) -> System.out.println(xx.toString()));
 
-        LnStrm<FnTupl2<Integer,Integer>> int2s3 = matrixEnum(genMatrix());
-	int2s3.foritm0((xx) -> System.out.println(xx.toString()));
+    //     LnStrm<FnTupl2<Integer,Integer>> int2s3 = matrixEnum(genMatrix());
+	// int2s3.foritm0((xx) -> System.out.println(xx.toString()));
 
-	return;
-    }
+	// return;
+    // }
 }
