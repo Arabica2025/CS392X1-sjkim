@@ -1,0 +1,132 @@
+############################################################
+
+Quiz02_00: 20 points
+
+############################################################
+
+Quiz02_01: 50 points
+(FnA1szLongestMonoSubsequence)
+Please state the status of this question:
+1. Incomplete
+2. Solved with testing?<-
+3. Solved without testing?
+If solved, please BRIEFLY explain your strategy.
+
+we need to get the longest list of numbers that are 
+leftmost ascending subsequence of xs
+and return the indices of that list.
+
+have two different array
+longest to store the leftmost ascending subsequence of xs
+prev to store the predecesor of longest
+
+assume the worst case first to initialize
+longest = 1
+prev = -1
+
+if xs[i] < xs[j] and longest[j] + 1 > longest[i] to check
+that the j gives solid longer subsequence -> this allows us to have leftmost
+
+if both holds, update longest
+
+after the loops, update the length and index and concat all.
+############################################################
+
+Quiz02_02: 50 points
+(sort1000WithNoRecursion)
+Please state the status of this question:
+1. Incomplete
+$2. Solved with testing?$ <-
+3. Solved without testing? 
+If solved, please BRIEFLY explain your strategy.
+    insertion sort compares elements that are consecutively placed.
+    this would not be great if it is reverse sorted.
+
+    I simply widened the intervals of comparison so instead of
+    comparing elements that are close to each other, enlarge the 
+    interval of the elements that are compared and narrow down.
+
+    On average, this would be way better than normal insertion sort.
+    interval = 2^k -1
+    on every iteration of comparison k
+    and do insertion sort with given interval.
+############################################################
+
+Quiz02_03: 50 points
+(Soduku_dfs_solve and Soduku_bfs_solve)
+Please state the status of this question:
+1. Incomplete
+2. Solved with testing? <-
+3. Solved without testing? 
+If solved, please BRIEFLY explain your strategy.
+
+It is basically a tree based approach to find the given value of
+after all calculation of four given numbers, the result is 24.
+
+from the root, it branches out all possible combinations of calculation
+of all pairs of values
+it gets called r1,r2,r3 consecutively.
+
+as it comes down, the size of Term[] shrinks and converges to one value
+Setup for 
+1. Calculation helper
+2. Node setup helper
+3. validity checker
+4. root setup to start DFS and BFS main method
+5. append all combinations r1,r2,r3 in Term[]
+
+after that, we enumerate all nodes to filter if it is solved.
+############################################################
+
+Please choose only ONE from Quiz02_04 and Quiz02_05.
+If unspecified, I assume by default that Quiz02_04 is
+chosen.
+
+############################################################
+
+Quiz02_04:
+30 points plus up to 20 bonus points
+(isAVL and genAVLBST)
+Please state the status of this question:
+1. Incomplete
+2. Solved with testing?
+3. Solved without testing?
+If solved, please BRIEFLY explain your strategy.
+
+the generated AVL is of maximal height (not minimal height) because
+AVL ensures that the difference between the height of 
+    1. left subtree and
+    2. righ subtree
+is {-1,0,1}.
+Because of this rule, each node has a minimum number of subtrees that it has
+to satisfy the rule.
+So the height of lchild is h-1 and that of rchild is h-2
+which forms minimum number of nodes at height h = 1 + min(h-1) + min(h-2)
+
+this is fibonacci sequence! and recursive fibonacci sequence would get us
+biased or leaned structure of the tree that tends to lean on either sides,
+which yields a miximal height instead of minimal height
+
+
+############################################################
+
+Quiz02_05:
+30 points plus up to 20 bonus points
+(isRBT and genRedBlackBST)
+Please state the status of this question:
+1. Incomplete
+2. Solved with testing?
+3. Solved without testing?
+If solved, please BRIEFLY explain your strategy.
+
+############################################################
+
+Quiz02_06: 50 points
+(reroot and insert on DBST)
+Please state the status of this question:
+1. Incomplete
+2. Solved with testing?
+3. Solved without testing?
+If solved, please BRIEFLY explain your strategy.
+
+############################################################
